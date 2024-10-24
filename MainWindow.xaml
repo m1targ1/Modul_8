@@ -1,0 +1,68 @@
+﻿<Window x:Class="Modul_8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Modul_8"
+        mc:Ignorable="d"
+        Title="Contacts" Height="600" Width="300" ResizeMode="NoResize"
+        Background="LightGoldenrodYellow">
+    <!-- Фон окна -->
+    <Grid Margin="10,10,10,10">
+        <TextBox x:Name="textBox_Search" TextChanged="TbSearch_TextChanged" HorizontalAlignment="Left" Margin="0,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+                 Width="210" Height="30" Padding="5" FontSize="14" Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="1"/>
+
+        <!-- Кнопка "+" обернута в Border для добавления CornerRadius -->
+        <Border Background="#4CAF50" CornerRadius="5" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,14,5,0">
+            <Button x:Name="btn_AddContact" Content="+" Width="40" Height="30" FontFamily="Times New Roman" FontSize="14" 
+                    FontWeight="Bold" Click="btn_AddContact_Click" Foreground="White" BorderBrush="Transparent" BorderThickness="0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Border>
+
+        <!-- Разделительная линия -->
+        <Rectangle HorizontalAlignment="Center" Height="1" Margin="0,50,0,0" Stroke="Black" VerticalAlignment="Top" Width="400"/>
+
+        <!-- Список контактов -->
+        <ListBox x:Name="ListBox_Contacts" Margin="5,55,5,5" SelectionMode="Extended" ItemsSource="{Binding Contacts}" 
+         Background="#FFFFFF" BorderBrush="#CCCCCC" BorderThickness="1" SelectionChanged="ListBox_Contacts_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="#F9F9F9" Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="55"/>
+                            <!-- Колонка для иконки -->
+                            <ColumnDefinition Width="*"/>
+                            <!-- Колонка для текста -->
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- Первая строка для имени -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- Вторая строка для номера -->
+                        </Grid.RowDefinitions>
+
+                        <!-- Иконка контакта -->
+                        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="1">
+                            <Ellipse Width="50" Height="50" Margin="0 0 0 0" HorizontalAlignment="Right">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding IconSource}" Stretch="Fill"></ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+
+                        <!-- Contact Text -->
+                        <TextBlock Text="{Binding FullName}" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Foreground="#333333"
+                                   Grid.Column="1" Grid.Row="0"/>
+                        <TextBlock Text="{Binding PhoneNumbers[0]}" VerticalAlignment="Top" FontSize="12" FontWeight="Normal" Foreground="#666666"
+                                   Grid.Column="1" Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

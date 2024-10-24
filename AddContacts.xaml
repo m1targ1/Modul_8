@@ -1,0 +1,65 @@
+﻿<Window x:Class="Modul_8.AddContacts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Modul_8"
+        mc:Ignorable="d"
+        Title="Добавление контактов" Height="600" Width="300" ResizeMode="NoResize">
+    <ScrollViewer>
+        <Grid Margin="10">
+            <StackPanel>
+                <TextBlock Text="Добавить контакт" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Фамилия:"/>
+                    <TextBox Name="LastNameTextBox" Margin="0,0,0,5" />
+                    <TextBlock Name="LastNamePlaceholder" Text="Введите фамилию" Foreground="Gray" />
+                </StackPanel>
+
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Имя (обязательно):" Foreground="Red"/>
+                    <TextBox Name="FirstNameTextBox" Margin="0,0,0,5" />
+                    <TextBlock Name="FirstNamePlaceholder" Text="Введите имя" Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Отчество:"/>
+                    <TextBox Name="MiddleNameTextBox" Margin="0,0,0,5" />
+                    <TextBlock Name="MiddleNamePlaceholder" Text="Введите отчество" Foreground="Gray" />
+                </StackPanel>
+
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Номер телефона (обязательно):" Foreground="Red"/>
+                    <ItemsControl Name="PhoneNumbersPanel" Margin="0,0,0,5">
+                        <TextBox Margin="0,0,0,5"/>
+                        <TextBlock Text="Введите номер телефона" Foreground="Gray"/>
+                    </ItemsControl>
+                    <Button Content="Добавить номер" Click="AddPhoneNumber_Click"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Должность:"/>
+                    <TextBox Name="PositionTextBox" Margin="0,0,0,5"/>
+                    <TextBlock Name="PositionPlaceholder" Text="Введите должность" Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Дата рождения:"/>
+                    <DatePicker Name="BirthDatePicker" Margin="0,0,0,5"/>
+                </StackPanel>
+
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Email:"/>
+                    <ItemsControl Name="EmailsPanel" Margin="0,0,0,5">
+                        <TextBox Margin="0,0,0,5" />
+                        <TextBlock Text="Введите email" Foreground="Gray"/>
+                    </ItemsControl>
+                    <Button Content="Добавить email" Click="AddEmail_Click"/>
+                </StackPanel>
+
+                <Button Content="Сохранить контакт" Click="SaveContact_Click" Margin="0,10,0,0"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>
